@@ -55,7 +55,7 @@ commands:
                  {
                     "type": "netcoredbg",
                     "request": "launch",
-                    "program": "/projects/SignalRChat/bin/Debug/netcoreapp3.1/web.dll",
+                    "program": "/projects/SignalRChat/bin/Debug/netcoreapp3.1/SignalRChat.dll",
                     "args": [],
                     "name": ".NET Core Launch (console)",
                     "stopAtEntry": true,
