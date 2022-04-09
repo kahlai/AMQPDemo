@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace SignalRChat
+namespace AMQPDemo
 {
     public class Program
     {
@@ -20,7 +20,7 @@ namespace SignalRChat
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>().UseUrls("http://0.0.0.0:5000/");
+                    webBuilder.UseStartup<Startup>().UseUrls(Environment.GetEnvironmentVariable("WEB_UI")!=null?Environment.GetEnvironmentVariable("WEB_UI"):"http://0.0.0.0:5000/");
                 });
     }
 }

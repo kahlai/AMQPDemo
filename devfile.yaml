@@ -2,9 +2,9 @@ apiVersion: 1.0.0
 metadata:
   name: dotnet-demo-signalr-chat
 projects:
-  - name: SignalRChat
+  - name: AMQPDemo
     source:
-      location: 'https://github.com/rhsgsa/SignalRChat.git'
+      location: 'https://github.com/rhsgsa/AMQPDemo.git'
       type: git
       branch: main
 components:
@@ -30,19 +30,19 @@ components:
 commands:
   - name: 3. Run
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/SignalRChat'
+      - workdir: '${CHE_PROJECTS_ROOT}/AMQPDemo'
         type: exec
         command: dotnet run
         component: dotnet
   - name: 1. Update dependencies
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/SignalRChat'
+      - workdir: '${CHE_PROJECTS_ROOT}/AMQPDemo'
         type: exec
         command: dotnet restore
         component: dotnet
   - name: 2. Build
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/SignalRChat'
+      - workdir: '${CHE_PROJECTS_ROOT}/AMQPDemo'
         type: exec
         command: dotnet build
         component: dotnet
@@ -55,7 +55,7 @@ commands:
                  {
                     "type": "netcoredbg",
                     "request": "launch",
-                    "program": "/projects/SignalRChat/bin/Debug/net5.0/SignalRChat.dll",
+                    "program": "/projects/AMQPDemo/bin/Debug/net5.0/AMQPDemo.dll",
                     "args": [],
                     "name": ".NET Core Launch (console)",
                     "stopAtEntry": true,

@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SignalRChat.Hubs;
+using AMQPDemo.Hubs;
 
-namespace SignalRChat
+namespace AMQPDemo
 {
     public class Startup
     {
@@ -26,6 +26,7 @@ namespace SignalRChat
         {
             services.AddRazorPages();
             services.AddSignalR();
+            services.AddHostedService<Worker>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +55,8 @@ namespace SignalRChat
                 endpoints.MapRazorPages();
                  endpoints.MapHub<ChatHub>("/chatHub");
             });
+
+            
         }
     }
 }

@@ -1,18 +1,65 @@
 ﻿@page
+@using AMQPDemo.Hubs
     <div class="container">
-        <div class="row">&nbsp;</div>
         <div class="row">
-            <div class="col-2">User</div>
-            <div class="col-4"><input type="text" id="userInput" /></div>
+            <div class="col-2">Server Status</div>
+            <div class="col-2"><div id="conn_status"></div></div>
+            <div class="col-2">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-2">&nbsp;</div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-2">Broker Url</div>
+            <div class="col-4">@Util.getBrokerUrl()</div>
+        </div>
+        <div class="row">
+            <div class="col-2">Listen to</div>
+            <div class="col-4"><input type="text" id="userInput" disabled value='@Util.getReceiveAddress()'/></div>
+        </div>
+        <div class="row">
+            <div class="col-2">Send to</div>
+            <div class="col-4"><input type="text" id="targetInput" disabled value='@Util.getSendAddress()' /></div>
         </div>
         <div class="row">
             <div class="col-2">Message</div>
-            <div class="col-4"><input type="text" id="messageInput" /></div>
+            <div class="col-2"><input type="text" id="messageInput" /></div>
+            <div class="col-2"><input type="button" id="toogleButton" value="More"/></div>
         </div>
         <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-6">
-                <input type="button" id="sendButton" value="Send Message" />
+        <div id="advance_opt" style="display: none;">
+            <div class="row">
+                <div class="col-2">&nbsp;</div>
+                <div class="col-4">Auto send every <select id="interval">
+                    <option value="5000">5</option>
+                    <option value="3000">3</option>
+                    <option value="1000">1</option>
+                </select> seconds</div>
+            </div>
+            <div class="row">
+                <div class="col-2">&nbsp</div>
+                <div class="col-1" style="display:none">
+                    <label class="switch">
+                    <input id="appendCount" type="checkbox" checked>
+                    <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="col-4">Append Incremental Number <input id="counter" type="text" style="width:40px" value="1" /></div>
+            </div>
+             <div class="row">
+                <div class="col-6">
+                    <input type="button" id="startButton" value="Start" />
+                </div>
+            </div>
+        </div>
+        
+        <div id="basic_opt" style="display: block;">
+            
+            <div class="row">
+                <div class="col-6">
+                    <input type="button" id="sendButton" value="Send Message" />
+                </div>
             </div>
         </div>
     </div>
@@ -27,4 +74,4 @@
         </div>
     </div>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+<script src="~/js/chat.js?t=7"></script>
